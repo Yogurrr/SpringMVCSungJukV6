@@ -20,7 +20,8 @@
           p:username="${USR}" p:password="${PWD}" />
     <!-- 이건 외부라이브러리라 bean 태그로 설정 해야됨
          간편하게 하기 위해서 p태그로 쓴 것임
-         이렇게 쓰면 spring이 알아서 연결 객체를 만들어 줌 -->
+         이렇게 쓰면 spring이 알아서 연결 객체를 만들어 줌
+         이렇게 쓰면 쉽고 좋음 -->
 
     <!-- jdbc template -->
     <bean id="jdbcTemplate"
