@@ -30,7 +30,7 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {   // 키보드 �
     }
 
     public SungJukVO readOneSungJuk(int sjno) {
-        return null;
+        return sjdao.selectOneSungJuk(sjno);
     }
 
     // 성적 리스트 받아옴 (이름, 국어, 영어, 수학)

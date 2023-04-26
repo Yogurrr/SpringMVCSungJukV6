@@ -5,8 +5,8 @@
     <title>성적 리스트</title>
 </head>
 <body>
-    <h1>성적 리스트</h1>
-    <table border="1" width="750px" cellpadding="10px" cellspacing="0">
+    <h1 style="text-align: center">성적 리스트</h1>
+    <table border="1" width="750px" cellpadding="10px" cellspacing="0" style="margin: 0 auto">
         <tr>
             <th>이름</th>
             <th>국어</th>
@@ -19,7 +19,7 @@
          --%>
         <c:forEach items="${sjs}" var="sj">
             <tr style="text-align: center">
-                <td>${sj.names}</td>
+                <td><a href="/view?sjno=${sj.sjno}">${sj.names}</a></td>
                 <td>${sj.kors}</td>
                 <td>${sj.engs}</td>
                 <td>${sj.mats}</td>
