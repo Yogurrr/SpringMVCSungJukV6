@@ -1,8 +1,11 @@
 package yogurrr.spring4.sungjukv6.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import yogurrr.spring4.sungjukv6.dao.SungJukV4DAO;
+import yogurrr.spring4.sungjukv6.dao.SungJukV6DAOImpl;
 import yogurrr.spring4.sungjukv6.model.SungJukVO;
 
 import java.util.List;
@@ -10,9 +13,8 @@ import java.util.Scanner;
 
 @Service("sjsrv")
 public class SungJukV6ServiceImpl implements SungJukV6Service {   // 키보드 입력 받아서 리스트에 저장하는 역할
-    private Scanner sc = null;
-    private List<SungJukVO> sjs = null;
     private SungJukV4DAO sjdao = null;
+    private static final Logger logger = LogManager.getLogger(SungJukV6DAOImpl.class);
 
     @Autowired
     public SungJukV6ServiceImpl(SungJukV4DAO sjdao) {   // 이렇게 하면 자동으로 객체 생성됨
@@ -42,6 +44,8 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {   // 키보드 �
         boolean result = false;
 
         this.computeSungJuk(sj);
+        logger.info(sj);
+
         if (sjdao.insertSungJuk(sj) > 0) result = true;
 
         return result;
