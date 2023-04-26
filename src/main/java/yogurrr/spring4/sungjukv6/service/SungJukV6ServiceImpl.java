@@ -19,16 +19,16 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {   // 키보드 �
         this.sjdao = sjdao;
     }
 
-    public void removeSungJuk() {
-
+    public boolean removeSungJuk(int sjno) {
+        return false;
     }
 
-    public void modifySungJuk() {
-
+    public boolean modifySungJuk(SungJukVO sj) {
+        return false;
     }
 
-    public void readOneSungJuk() {
-        return;
+    public SungJukVO readOneSungJuk(int sjno) {
+        return null;
     }
 
     // 성적 리스트 받아옴 (이름, 국어, 영어, 수학)
@@ -38,10 +38,16 @@ public class SungJukV6ServiceImpl implements SungJukV6Service {   // 키보드 �
     }
 
     // 성적 데이터 추가
-    public void newSungJuk() {
+    public boolean newSungJuk(SungJukVO sj) {
+        boolean result = false;
 
+        this.computeSungJuk(sj);
+        if (sjdao.insertSungJuk(sj) > 0) result = true;
+
+        return result;
     }
 
+    // 성적 데이터 처리
     public void computeSungJuk(SungJukVO sj) {
         sj.setTots( sj.getKors() + sj.getEngs() + sj.getMats() );
         sj.setAvgs((double) sj.getTots() / 3);
